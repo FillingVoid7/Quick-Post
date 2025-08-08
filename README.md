@@ -9,8 +9,6 @@ A simple blog application built with Next.js, TypeScript, and Redis.
 - ✏️ Edit your own blog posts
 - 🗑️ Delete your own blog posts
 - 🔐 User authentication (login/logout)
-- 🌙 Dark/Light theme toggle
-- 📱 Responsive design with Tailwind CSS
 
 ## Tech Stack
 
