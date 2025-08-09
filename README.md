@@ -20,6 +20,23 @@ A simple blog application built with Next.js, TypeScript, and Redis.
 
 ## Getting Started
 
+1. **Prerequisites**: Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+2. **Clone and start**:
+   ```bash
+   git clone https://github.com/FillingVoid7/Quick-Post.git
+   cd Quick-Post
+   cp .env.example .env
+   # Edit .env and add your SESSION_SECRET (see GETTING_STARTED.md)
+   docker-compose up --build -d
+   ```
+
+3. **Access the app**: http://localhost:3000
+
+📖 **New to the project?** See [GETTING_STARTED.md](GETTING_STARTED.md) for detailed setup instructions.
+
+### 💻 Local Development
+
 1. **Install dependencies:**
    ```bash
    npm install
@@ -35,5 +52,17 @@ A simple blog application built with Next.js, TypeScript, and Redis.
 
 4. **Open your browser:**
    - Visit [http://localhost:3000]
+
+
+### Production Notes
+
+- The app includes health checks at `/api/health`
+- Redis data is persisted using Docker volumes
+- Environment variables are configurable via `.env` file
+- Multi-stage Docker build optimizes image size
+- Includes wait script to prevent Redis connection issues
+
+
+
 
 

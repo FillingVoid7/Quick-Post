@@ -18,7 +18,7 @@ export default function CreateBlog() {
     const [content, setContent] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState<User | null>(null);
+    const [_user, setUser] = useState<User | null>(null);
     const [authLoading, setAuthLoading] = useState(true);
 
     const wordCount = content.trim() === "" ? 0 : content.trim().split(/\s+/).length;
@@ -79,7 +79,7 @@ export default function CreateBlog() {
             } else {
                 toast.error("Failed to create blog post");
             }
-        } catch (error) {
+        } catch (_error) {
             toast.error("An unexpected error occurred");
         } finally {
             setIsLoading(false);

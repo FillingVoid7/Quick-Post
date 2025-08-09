@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -21,7 +21,7 @@ interface User {
   userId?: string;
 }
 
-export default function ViewFullBlog() {
+function ViewFullBlogContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const postId = searchParams.get("id");
@@ -525,5 +525,32 @@ export default function ViewFullBlog() {
         }
       `}</style>
     </main>
+  );
+}
+
+export default function ViewFullBlog() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-indigo-900">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="relative z-10 flex items-center justify-center min-h-screen">
+          <div className="text-center animate-fade-in">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl mb-6 shadow-lg animate-spin">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            </div>
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+              Loading Blog Post
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              Fetching the amazing story for you...
+            </p>
+          </div>
+        </div>
+      </main>
+    }>
+      <ViewFullBlogContent />
+    </Suspense>
   );
 }

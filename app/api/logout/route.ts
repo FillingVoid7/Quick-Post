@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getSession } from "@/lib/session";
 import { redis } from "@/lib/redis";
 
-export async function POST(req: Request) {
+export async function POST() {
   const session = await getSession();
   const sid = session.sid;
 

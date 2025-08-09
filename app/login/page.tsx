@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-export const LoginPage = () => {
+const LoginPage = () => {
     const router = useRouter();
     
     const handleLogin = async (event: React.FormEvent) => {
